@@ -4,6 +4,14 @@
   vars:
     mysql_root_pwd: ExpenseApp@1
   tasks:
+  - name: installing pip
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      # state: installed 
+      executable: pip3.9
+    loop:
+      - PyMySQL
+      
   - name: installing mysql app
     ansible.builtin.package:
       name: mysql-server
