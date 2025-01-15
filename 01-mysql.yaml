@@ -3,23 +3,14 @@
   become: yes
   tasks:
   - name: installing mysql app
-    ansible.legacy.dnf:
+    ansible.builtin.package:
       name: mysql-server
       state: installed
-      register: insatlling-mysql-status
-  
-  - name: printing the installation status of mysql
-    ansible.builtin.debug:
-      msg: "MySQL Status: {{ insatlling-mysql-status }}"
-
+      
   - name: start and enable the mysql service
-    ansible.legacy.systemd:
+    ansible.builtin.service:
       name: mysqld
       state: restarted
       enabled: yes 
-      register: mysql-service
   
-  - name: printing the mysql service status
-    ansible.builtin.debug:
-      msg: "MySQL service Status: {{ mysql-service }}"
-
+  - name: 
