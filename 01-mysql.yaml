@@ -17,9 +17,9 @@
       name: mysqld
       state: restarted
       enabled: yes 
-      register: mysql-service
+  #     register: mysql-service
   
-  - name: printing the mysql service status
-    ansible.builtin.debug:
-      msg: "MySQL service Status: {{ mysql-service }}"
+  # - name: printing the mysql service status
+  #   ansible.builtin.debug:
+  #     msg: "MySQL service Status: {{ mysql-service }}"
 
