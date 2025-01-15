@@ -29,4 +29,8 @@
       login_password: "{{ mysql_root_pwd }}"
       login_host: 172.31.89.97
     register: mysql_info
-    # ignore_errors: true
+    ignore_errors: true
+
+  - name: print the output
+    ansible.builtin.debug:
+      msg: "MySQL info: {{ mysql_info }}"
