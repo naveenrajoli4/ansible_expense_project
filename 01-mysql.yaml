@@ -1,0 +1,14 @@
+- name: install mysql
+  hosts: mysqlserver
+  become: yes
+  tasks:
+  - name: installing mysql app
+    ansible.builtin.package:
+      name: mysql-server
+      state: installed
+      register: insatlling-mysql-status
+  
+  - name: printing the installation status of mysql
+    ansible.builtin.debug:
+      msg: "MySQL Status: {{ insatlling-mysql-status }}"
+
