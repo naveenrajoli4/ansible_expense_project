@@ -1,5 +1,5 @@
 - name: install mysql
-  hosts: 172.31.89.97
+  hosts: mysql
   become: yes
   tasks:
   - name: installing mysql app
