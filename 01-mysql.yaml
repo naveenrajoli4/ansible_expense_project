@@ -1,5 +1,5 @@
 - name: install mysql
-  hosts: mysqlserver
+  hosts: mysqlservers
   become: yes
   tasks:
   - name: installing mysql app
@@ -11,4 +11,15 @@
   - name: printing the installation status of mysql
     ansible.builtin.debug:
       msg: "MySQL Status: {{ insatlling-mysql-status }}"
+
+  - name: start and enable the mysql service
+    ansible.builtin.service:
+      name: mysqld
+      state: restarted
+      enabled: yes 
+      registerd: mysql-service
+  
+  - name: printing the mysql service status
+    ansible.builtin.debug:
+      msg: "MySQL service Status: {{ mysql-service }}"
 
