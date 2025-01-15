@@ -11,6 +11,7 @@
       executable: pip3.9
     loop:
       - PyMySQL
+      - cryptography
 
   - name: installing mysql app
     ansible.builtin.package:
