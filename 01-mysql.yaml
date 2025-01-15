@@ -11,7 +11,7 @@
       executable: pip3.9
     loop:
       - PyMySQL
-      
+
   - name: installing mysql app
     ansible.builtin.package:
       name: mysql-server
@@ -27,6 +27,6 @@
     community.mysql.mysql_info:
       login_user: root
       login_password: "{{ mysql_root_pwd }}"
-      login_host: mysql.daws82s.online
+      login_host: 172.31.89.97
     register: mysql_info
-    ignore_errors: true
+    # ignore_errors: true
