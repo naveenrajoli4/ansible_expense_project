@@ -1,0 +1,14 @@
+- name: expence project frontend server setup
+  hosts: backend
+  become: yes
+  tasks: 
+  - name: install NGINX
+    ansible.builtin.package:
+      name: nginx
+      state: installed
+  
+  - name: Enable and start the nginx service
+    ansible.builtin.systemd_service:
+      name: nginx
+      enabled: yes
+      state: started
