@@ -14,3 +14,16 @@
         - Changed: "{{ service_result.changed }}"
         - Service Name: "{{ service_result.name }}"
         - State: "{{ service_result.state }}"
+
+  - name: NodeJS service off
+    ansible.builtin.service:
+      name: nodejs:20
+      state: started
+    register: service_result2
+
+  - name: print out put
+    ansible.builtin.debug:
+      msg:
+        - Changed: "{{ service_result2.changed }}"
+        - Service Name: "{{ service_result2.name }}"
+        - State: "{{ service_result2.state }}"
