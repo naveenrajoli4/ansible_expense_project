@@ -11,7 +11,7 @@
     ansible.builtin.debug:
       msg: "{{ service_result1 }}"
 
-  - name: Disable Node.js module
+  - name: enable nodejs:20
     ansible.builtin.command:
       cmd: "dnf module enable nodejs:20 -y"
     register: service_result2
@@ -36,7 +36,7 @@
       state: directory
       mode: '0755'
 
-  - name: install node js
+  - name: install zip
     ansible.builtin.package:
       name: zip
       state: installed
@@ -44,5 +44,5 @@
   - name: Unarchive a file that needs to be downloaded # module to download and extract an archive file (in this case, a ZIP file) from a remote source directly onto the target system.
     ansible.builtin.unarchive:
       src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-      dest: /tmp/backend.zip
+      dest: /tmp/
       remote_src: yes # remote_src: yes indicates that the src file is a remote file (in this case, a URL), not a local file present on the control machi
