@@ -66,8 +66,8 @@
   - name: Enable and start the service
     ansible.builtin.systemd_service:
       name: backend.service
-      enabled: yes
       state: started
+      enabled: yes      
 
   - name: installing mysql app
     ansible.builtin.package:
@@ -75,9 +75,13 @@
       state: installed
 
   - name: Load the schema into MySQL
-    ansible.builtin.command:
-      cmd: "mysql -h {{ mysql_server_ip }} -uroot -p{{ mysql_root_password }} < /app/schema/backend.sql"
-      remote_src: yes
+    community.mysql.mysql_db:
+      # name: backend_db
+      # state: import
+      target: /app/schema/backend.sql
+      login_host: "{{ mysql_server_ip }}"
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
 
   - name: Restart the backend service
     ansible.builtin.systemd_service:
