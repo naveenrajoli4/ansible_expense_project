@@ -3,12 +3,12 @@
     instance_type: t3.small         # Specifies the EC2 instance type (t3.small in this case)
     image_id: ami-123456            # Specifies the Amazon Machine Image (AMI) ID to use for launching instances
     count: 2                        # Specifies the number of instances to launch (3 instances in this case)
-    region: us-east-2               # Specifies the AWS region where the instances will be launched
+    region: us-east-1               # Specifies the AWS region where the instances will be launched
     network_interfaces:
       - assign_public_ip: true      # Assigns a public IP to each instance
         groups:
           - "All-accessible security group"                 # Specifies the security group to associate with the instances (default security group)
     #     subnet_id: subnet-0123456   # Specifies the subnet ID where the instances will be launched
     state: present                  # Ensures that the instances are created (or running)
-    # tags:
-    #   foo: bar                      # Assigns a tag to the instances (key: foo, value: bar)
+    tags:
+      foo: bar                      # Assigns a tag to the instances (key: foo, value: bar)
