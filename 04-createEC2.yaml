@@ -5,7 +5,7 @@
     - name: Launch a new EC2 instance
       amazon.aws.ec2_instance:
         region: us-east-1
-        key_name: ""  # No key pair specified
+        key_name: AWSPUBKEY-DEC24  # No key pair specified
         instance_type: t3.micro
         image_id: ami-09c813fb71547fc4f  # Replace with your Community AMI ID
         security_groups: 
