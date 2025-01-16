@@ -1,5 +1,5 @@
 - name: expence project frontend server setup
-  hosts: backend
+  hosts: frontend
   become: yes
   tasks: 
   - name: install NGINX
