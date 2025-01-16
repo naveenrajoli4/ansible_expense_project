@@ -2,28 +2,27 @@
   hosts: backend
   become: yes
   tasks: 
-  - name: NodeJS service off
-    ansible.builtin.service:
-      name: nodejs
-      state: stopped
-    register: service_result
+  - name: Disable Node.js module
+    ansible.builtin.command:
+      cmd: "dnf module disable nodejs -y"
+    register: service_result1
 
   - name: print out put
     ansible.builtin.debug:
       msg:
-        - Changed: "{{ service_result.changed }}"
-        - Service Name: "{{ service_result.name }}"
-        - State: "{{ service_result.state }}"
+        - Changed: "{{ service_result1.changed }}"
+        - Service Name: "{{ service_result1.name }}"
+        - State: "{{ service_result1.state }}"
 
-  - name: NodeJS service off
-    ansible.builtin.service:
-      name: nodejs:20
-      state: started
-    register: service_result2
+  # - name: NodeJS service off
+  #   ansible.builtin.service:
+  #     name: nodejs:20
+  #     state: started
+  #   register: service_result2
 
-  - name: print out put
-    ansible.builtin.debug:
-      msg:
-        - Changed: "{{ service_result2.changed }}"
-        - Service Name: "{{ service_result2.name }}"
-        - State: "{{ service_result2.state }}"
+  # - name: print out put
+  #   ansible.builtin.debug:
+  #     msg:
+  #       - Changed: "{{ service_result2.changed }}"
+  #       - Service Name: "{{ service_result2.name }}"
+  #       - State: "{{ service_result2.state }}"
