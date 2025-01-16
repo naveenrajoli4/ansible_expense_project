@@ -5,79 +5,79 @@
     mysql_server_ip: 172.31.84.217
     mysql_root_password: ExpenseApp@1
   tasks: 
-  - name: Disable Node.js module
-    ansible.builtin.command:
-      cmd: "dnf module disable nodejs -y"
-  #   register: service_result1
+#   - name: Disable Node.js module
+#     ansible.builtin.command:
+#       cmd: "dnf module disable nodejs -y"
+#   #   register: service_result1
 
-  # - name: print out put
-  #   ansible.builtin.debug:
-  #     msg: "{{ service_result1 }}"
+#   # - name: print out put
+#   #   ansible.builtin.debug:
+#   #     msg: "{{ service_result1 }}"
 
-  - name: enable nodejs:20
-    ansible.builtin.command:
-      cmd: "dnf module enable nodejs:20 -y"
-  #   register: service_result2
+#   - name: enable nodejs:20
+#     ansible.builtin.command:
+#       cmd: "dnf module enable nodejs:20 -y"
+#   #   register: service_result2
 
-  # - name: print out put
-  #   ansible.builtin.debug:
-  #     msg: "{{ service_result2 }}"
+#   # - name: print out put
+#   #   ansible.builtin.debug:
+#   #     msg: "{{ service_result2 }}"
 
-  - name: install node js
-    ansible.builtin.package:
-      name: nodejs
-      state: installed
+#   - name: install node js
+#     ansible.builtin.package:
+#       name: nodejs
+#       state: installed
 
-  - name: Create a user 'expense' with a home directory
-    ansible.builtin.user:
-      name: expense
-      create_home: yes
+#   - name: Create a user 'expense' with a home directory
+#     ansible.builtin.user:
+#       name: expense
+#       create_home: yes
 
-  - name: Create a directory if it does not exist
-    ansible.builtin.file:
-      path: /app
-      state: directory
-      mode: '0755'
+#   - name: Create a directory if it does not exist
+#     ansible.builtin.file:
+#       path: /app
+#       state: directory
+#       mode: '0755'
 
-  - name: install zip
-    ansible.builtin.package:
-      name: zip
-      state: installed
+#   - name: install zip
+#     ansible.builtin.package:
+#       name: zip
+#       state: installed
 
-  - name: Unarchive a file that needs to be downloaded # module to download and extract an archive file (in this case, a ZIP file) from a remote source directly onto the target system.
-    ansible.builtin.unarchive:
-      src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-      dest: /app/
-      remote_src: yes # remote_src: yes indicates that the src file is a remote file (in this case, a URL), not a local file present on the control machi
+#   - name: Unarchive a file that needs to be downloaded # module to download and extract an archive file (in this case, a ZIP file) from a remote source directly onto the target system.
+#     ansible.builtin.unarchive:
+#       src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+#       dest: /app/
+#       remote_src: yes # remote_src: yes indicates that the src file is a remote file (in this case, a URL), not a local file present on the control machi
 
-  - name: Install packages based on package.json.
-    community.general.npm:
-      path: /app/
+#   - name: Install packages based on package.json.
+#     community.general.npm:
+#       path: /app/
 
-  - name: Copy backemd.service file from ansible to remote server 
-    ansible.builtin.copy:
-      src: /home/ec2-user/ansible_expense_project/backend.service
-      dest: /etc/systemd/system/backend.service
+#   - name: Copy backemd.service file from ansible to remote server 
+#     ansible.builtin.copy:
+#       src: /home/ec2-user/ansible_expense_project/backend.service
+#       dest: /etc/systemd/system/backend.service
   
-  - name: Reload systemd to recognize the new service
-    ansible.builtin.systemd_service:
-      daemon_reload: yes
+#   - name: Reload systemd to recognize the new service
+#     ansible.builtin.systemd_service:
+#       daemon_reload: yes
 
-  - name: Enable and start the service
-    ansible.builtin.systemd_service:
-      name: backend.service
-      state: started
-      enabled: yes      
+#   - name: Enable and start the service
+#     ansible.builtin.systemd_service:
+#       name: backend.service
+#       state: started
+#       enabled: yes      
 
-  - name: installing mysql app
-    ansible.builtin.package:
-      name: mysql-server
-      state: installed
+#   - name: installing mysql app
+#     ansible.builtin.package:
+#       name: mysql-server
+#       state: installed
 
   - name: Load the schema into MySQL
     community.mysql.mysql_db:
-      # name: backend_db
-      # state: import
+      name: backend_db
+      state: import
       target: /app/schema/backend.sql
       login_host: "{{ mysql_server_ip }}"
       login_user: root
