@@ -1,6 +1,9 @@
 - name: expence project backend server setup
   hosts: backend
   become: yes
+  vars:
+    mysql_server_ip: 172.31.84.217
+    mysql_root_password: ExpenseApp@1
   tasks: 
   - name: Disable Node.js module
     ansible.builtin.command:
@@ -65,3 +68,17 @@
       name: backend.service
       enabled: yes
       state: started
+
+  - name: installing mysql app
+    ansible.builtin.package:
+      name: mysql-server
+      state: installed
+
+  - name: Load the schema into MySQL
+    ansible.builtin.command:
+      cmd: "mysql -h {{ mysql_server_ip }} -uroot -p{{ mysql_root_password }} < /app/schema/backend.sql"
+
+  - name: Restart the backend service
+    ansible.builtin.systemd_service:
+      name: backend.service
+      state: restarted
