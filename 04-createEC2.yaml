@@ -1,5 +1,5 @@
 - name: Launch EC2 instance with a Community AMI
-  hosts: localhost
+  hosts: local
   gather_facts: no
   tasks:
     - name: Launch a new EC2 instance
