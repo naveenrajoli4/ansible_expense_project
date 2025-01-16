@@ -15,7 +15,7 @@
 
   - name: Recursively remove default nginx directory
     ansible.builtin.file:
-      path: /usr/share/nginx/html/*
+      path: /usr/share/nginx/html/
       state: absent
 
   - name: Unarchive a file that needs to be downloaded # module to download and extract an archive file (in this case, a ZIP file) from a remote source directly onto the target system.
