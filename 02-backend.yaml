@@ -45,7 +45,7 @@
     ansible.builtin.file:
       path: /app
       state: directory
-      mode: '0755'
+      # mode: '0755'
 
   - name: install zip
     ansible.builtin.package:

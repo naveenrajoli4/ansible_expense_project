@@ -1,0 +1,22 @@
+- name: Launch EC2 instance with a Community AMI
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Launch a new EC2 instance
+      amazon.aws.ec2_instance:
+        region: us-east-1
+        key_name: ""  # No key pair specified
+        instance_type: t3.micro
+        image_id: ami-09c813fb71547fc4f  # Replace with your Community AMI ID
+        security_groups: 
+          - All-accessible security group          # Name of the security group
+        count: 1
+        wait: yes
+        tags:
+          Name: CommunityAMIInstance
+      register: ec2_instance
+
+    - name: Display instance information
+      ansible.builtin.debug:
+        var: ec2_instance
+
