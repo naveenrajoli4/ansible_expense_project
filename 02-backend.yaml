@@ -55,4 +55,13 @@
     ansible.builtin.copy:
       src: /home/ec2-user/ansible_expense_project/backend.service
       dest: /etc/systemd/system/backend.service
-      # remote_src: yes
+  
+  - name: Reload systemd to recognize the new service
+    ansible.builtin.systemd_service:
+      daemon_reload: yes
+
+  - name: Enable and start the service
+    ansible.builtin.systemd_service:
+      name: backend.service
+      enabled: yes
+      state: started
