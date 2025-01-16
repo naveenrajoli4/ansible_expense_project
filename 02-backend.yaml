@@ -50,3 +50,9 @@
   - name: Install packages based on package.json.
     community.general.npm:
       path: /app/
+
+  - name: Copy a "sudoers" file on the remote machine for editing
+    ansible.builtin.copy:
+      src: /etc/sudoers
+      dest: /etc/sudoers.edit
+      remote_src: yes
