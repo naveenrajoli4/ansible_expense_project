@@ -6,3 +6,11 @@
     ansible.builtin.service:
       name: nodejs
       state: stopped
+      register: service_result
+
+  - name: print out put
+    ansible.builtin.debug:
+      msg:
+        - Changed: "{{ service_result.changed }}"
+        - Service Name: "{{ service_result.name }}"
+        - State: "{{ service_result.state }}"
