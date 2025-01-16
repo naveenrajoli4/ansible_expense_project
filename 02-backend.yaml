@@ -77,7 +77,7 @@
   - name: Load the schema into MySQL
     ansible.builtin.command:
       cmd: "mysql -h {{ mysql_server_ip }} -uroot -p{{ mysql_root_password }} < /app/schema/backend.sql"
-      remote_source: yes
+      remote_src: yes
 
   - name: Restart the backend service
     ansible.builtin.systemd_service:
