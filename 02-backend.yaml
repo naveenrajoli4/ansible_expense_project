@@ -11,4 +11,16 @@
     ansible.builtin.debug:
       msg: "{{ service_result1 }}"
 
-  
+  - name: Disable Node.js module
+    ansible.builtin.command:
+      cmd: "dnf module enable nodejs:20 -y"
+    register: service_result2
+
+  - name: print out put
+    ansible.builtin.debug:
+      msg: "{{ service_result2 }}"
+
+  - name: install node js
+    ansible.builtin.package:
+      name: nodejs
+      state: installed
