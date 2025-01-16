@@ -1,0 +1,8 @@
+- name: expence project backend server setup
+  hosts: backend
+  become: yes
+  tasks: 
+  - name: NodeJS service off
+    ansible.builtin.service:
+      name: nodejs
+      state: stopped
