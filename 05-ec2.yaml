@@ -7,8 +7,8 @@
     network_interfaces:
       - assign_public_ip: true      # Assigns a public IP to each instance
         groups:
-          - "All-accessible security group"                 # Specifies the security group to associate with the instances (default security group)
-    #     subnet_id: subnet-0123456   # Specifies the subnet ID where the instances will be launched
+          - sgr-095e84bf8102d42dc                 # Specifies the security group to associate with the instances (default security group)
+        subnet_id: subnet-050961f37cb6ba35b   # Specifies the subnet ID where the instances will be launched
     state: present                  # Ensures that the instances are created (or running)
     tags:
       foo: bar                      # Assigns a tag to the instances (key: foo, value: bar)
