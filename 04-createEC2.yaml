@@ -20,3 +20,18 @@
       ansible.builtin.debug:
         var: ec2_instance
 
+
+# Install boto3 and botocore:
+# Use pip to install the necessary libraries:
+
+# sudo yum install python3-pip  # if pip3 is not installed
+# sudo pip3 install boto3 botocore
+
+
+# Verify Installation:
+
+# After installation, verify that the libraries are installed correctly by running:
+
+# python3 -c "import boto3; import botocore"
+
+
