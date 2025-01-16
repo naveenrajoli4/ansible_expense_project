@@ -51,8 +51,8 @@
     community.general.npm:
       path: /app/
 
-  - name: Copy a "sudoers" file on the remote machine for editing
+  - name: Copy backemd.service file from ansible to remote server 
     ansible.builtin.copy:
-      src: /etc/sudoers
-      dest: /etc/sudoers.edit
+      src: /home/ec2-user/ansible_expense_project/backend.service
+      dest: /etc/systemd/system/backend.service
       remote_src: yes
