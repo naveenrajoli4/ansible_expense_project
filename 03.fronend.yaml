@@ -13,7 +13,7 @@
       enabled: yes
       state: started
 
-  - name: Recursively remove directory
+  - name: Recursively remove default nginx directory
     ansible.builtin.file:
       path: /usr/share/nginx/html/*
       state: absent
@@ -23,3 +23,13 @@
       src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
       dest: /tmp/
       remote_src: yes # remote_src: yes indicates that the src file is a remote file (in this case, a URL), not a local file present on the control machi
+
+  - name: Copy expence.conf file from ansible to remote server 
+    ansible.builtin.copy:
+      src: /home/ec2-user/ansible_expense_project/expence.conf
+      dest: /etc/nginx/default.d/expense.conf
+
+  - name: Restart nginx
+    ansible.builtin.systemd_service:
+      name: nginx
+      state: restarted
