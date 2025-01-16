@@ -6,7 +6,7 @@
     ansible.builtin.service:
       name: nodejs
       state: stopped
-      register: service_result
+    register: service_result
 
   - name: print out put
     ansible.builtin.debug:
