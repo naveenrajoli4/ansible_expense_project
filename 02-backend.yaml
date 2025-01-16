@@ -36,7 +36,7 @@
       state: directory
       mode: '0755'
 
-   - name: install node js
+  - name: install node js
     ansible.builtin.package:
       name: zip
       state: installed
@@ -45,4 +45,4 @@
     ansible.builtin.unarchive:
       src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
       dest: /tmp/backend.zip
-    remote_src: yes # remote_src: yes indicates that the src file is a remote file (in this case, a URL), not a local file present on the control machi
+      remote_src: yes # remote_src: yes indicates that the src file is a remote file (in this case, a URL), not a local file present on the control machi
