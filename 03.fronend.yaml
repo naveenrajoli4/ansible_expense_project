@@ -17,7 +17,7 @@
     ansible.builtin.find:
       paths: /usr/share/nginx/html # The directory path you want to clean
       recurse: yes  # Recurse to find files in subdirectories
-      file_type: file  # Ensure it only finds files
+      # file_type: file  # Ensure it only finds files
     register: files_to_remove
 
   - name: Recursively remove default nginx directory
