@@ -5,6 +5,14 @@
     mysql_server_ip: 172.31.84.217
     mysql_root_password: ExpenseApp@1
   tasks: 
+  - name: installing pip
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop:
+      - PyMySQL
+      - cryptography
+      
 #   - name: Disable Node.js module
 #     ansible.builtin.command:
 #       cmd: "dnf module disable nodejs -y"
