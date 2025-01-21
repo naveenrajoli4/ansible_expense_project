@@ -27,7 +27,7 @@
     community.mysql.mysql_info:
       login_user: root
       login_password: "{{ mysql_root_pwd }}"
-      login_host: mysqlserver # here "mysqlserver" or "< private ip >" it will take host from inventory.ini file or we can provide ip address directly
+      login_host: kdpsqlprod01.naveenrajoli.site # here "mysqlserver" or "<private ip >" it will take host from inventory.ini file or we can provide ip address directly
     register: mysql_info
     ignore_errors: true
 
