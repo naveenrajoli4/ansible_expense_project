@@ -28,7 +28,7 @@
       name: "{{ item }}"
       instance_type: "{{ instances_type }}"
       image_id: "{{ img_id }}"  # Replace with your Community AMI ID
-      security_groups: "{{ security_groups-ID: }}"         # Name of the security group
+      security_groups: "{{ security_groups_ID }}"         # Name of the security group
       subnet_id: "{{ subnet_ID }}"
     loop: "{{ instances }}"
            
