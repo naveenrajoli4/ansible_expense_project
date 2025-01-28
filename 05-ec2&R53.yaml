@@ -45,7 +45,7 @@
 
   - name: create private IP addtesses
     amazon.aws.route53:
-      sate: present
+      state: present
       zone: "{{ zone }}"
       type: A
       record: "{{ item.item }}.{{ zone }}"
