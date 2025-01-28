@@ -18,10 +18,10 @@
       name: {{ item }}
       executable: pip3.9
     loop:
-      - PyMySQL
-      - cryptography
-      - boto
-      - boto3
+    - PyMySQL
+    - cryptography
+    - boto
+    - boto3
 
   - name: Launch a new EC2 instance
     amazon.aws.ec2_instance:
