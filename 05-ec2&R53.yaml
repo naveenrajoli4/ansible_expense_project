@@ -9,9 +9,12 @@
     subnet_ID: subnet-05adc3556c09f9863
     zone: naveenrajoli.site
     instances:
-    - mysqlserver
-    - backendserver
-    - frontendserver
+    - kdpsqlprod01
+    - kdpbackprod02
+    - kdpfrontprod03
+    # - mysqlserver
+    # - backendserver
+    # - frontendserver
 
   tasks:
   - name: installing required packages for ansible
