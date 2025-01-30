@@ -1,0 +1,7 @@
+- name: nginx insallation
+  hosts: nginx
+  become: yes
+  - name: installing nginx
+    ansible.builtin.package:
+      name: nginx
+      state: present
