@@ -1,5 +1,5 @@
 - name: nginx insallation
-  hosts: nginx
+  hosts: all
   become: yes
   - name: installing nginx
     ansible.builtin.package:
