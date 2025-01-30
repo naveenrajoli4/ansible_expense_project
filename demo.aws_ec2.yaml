@@ -4,7 +4,7 @@ regions:
 filters:
   tag:Name: 
   - nginx
-  - ansible
+  # - ansible
   instance-state-name: running
 hostnames:
 # You can also specify a list in order of precedence for hostname variables.
