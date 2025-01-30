@@ -1,10 +1,9 @@
-pulgin: amazon.aws.aws_ec2
+plugin: amazon.aws.aws_ec2
 regions:
   - us-east-1
 filters:
   tag:Name: 
-    - nginx
-    - ansible
+  - nginx
   instance-state-name: running
 hostnames:
 # You can also specify a list in order of precedence for hostname variables.
